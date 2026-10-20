@@ -1,5 +1,7 @@
 # 🚀 Shopify to WooCommerce High-Fidelity Catalog Migrator
 
+[🇬🇧 English](README.md) · [🇹🇷 Türkçe](README.tr.md)
+
 [![WooCommerce HPOS Ready](https://img.shields.io/badge/Compatibility-Production%20Ready-7f54b3.svg)](#)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](LICENSE)
 [![Open Source](https://img.shields.io/badge/Open%20Source-Community%20Project-brightgreen.svg)](#)
