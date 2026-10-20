@@ -1,0 +1,3 @@
+Handle,Title,Body (HTML),Type,Tags,Option1 Name,Option1 Value,Variant SKU,Variant Price,Variant Inventory Qty,Image Src
+linen-shirt,Linen Shirt,<p>100% French linen</p>,Apparel,linen,Size,S,LS-S,55.00,10,https://example.com/s.jpg
+linen-shirt,Linen Shirt,,Apparel,linen,Size,M,LS-M,55.00,15,https://example.com/m.jpg

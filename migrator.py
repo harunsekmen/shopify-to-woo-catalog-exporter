@@ -2,6 +2,7 @@
 import csv
 import io
 import sys
+import os
 import argparse
 
 class ShopifyCatalogMigrator:
@@ -73,12 +74,36 @@ class ShopifyCatalogMigrator:
 
         return woo_rows
 
+def run_migration(input_file: str, output_file: str):
+    if not os.path.exists(input_file):
+        print(f"Error: Input file '{input_file}' not found.")
+        sys.exit(1)
+
+    with open(input_file, mode='r', encoding='utf-8-sig', errors='replace') as f:
+        reader = csv.DictReader(f)
+        shopify_rows = list(reader)
+
+    if not shopify_rows:
+        print(f"Notice: Input file '{input_file}' contains no product rows.")
+        sys.exit(0)
+
+    woo_rows = ShopifyCatalogMigrator.convert_shopify_csv_to_woo(shopify_rows)
+
+    with open(output_file, mode='w', encoding='utf-8', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=ShopifyCatalogMigrator.WOO_HEADERS)
+        writer.writeheader()
+        writer.writerows(woo_rows)
+
+    print(f"Success: Converted {len(shopify_rows)} Shopify rows into {len(woo_rows)} WooCommerce HPOS products.")
+    print(f"Destination: {output_file}")
+
 def main():
-    parser = argparse.ArgumentParser(description="Shopify to WooCommerce Catalog Migrator")
-    parser.add_argument("--input", required=True, help="Input Shopify products.csv")
-    parser.add_argument("--output", default="woocommerce_import.csv", help="Output WooCommerce CSV")
+    parser = argparse.ArgumentParser(description="Shopify to WooCommerce Catalog Migrator CLI")
+    parser.add_argument("--input", "-i", required=True, help="Path to exported Shopify products.csv")
+    parser.add_argument("--output", "-o", default="woocommerce_import.csv", help="Destination path for WooCommerce import CSV")
     args = parser.parse_args()
-    print(f"Migrating {args.input} to {args.output}...")
+
+    run_migration(args.input, args.output)
 
 if __name__ == '__main__':
     main()
