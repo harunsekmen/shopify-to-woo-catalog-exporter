@@ -52,6 +52,22 @@ Need this architecture customized for your brand, or looking for turnkey e-comme
 
 ---
 
+## 🧪 Automated Testing & Live Verification
+
+This repository includes a standalone test suite with zero external mock dependencies.
+
+### How to Run Tests
+```bash
+python3 tests/test_migrator.py
+```
+
+### Verification Scope
+- **Test Target:** `Tests full end-to-end CSV conversion: maps Shopify product variants, image galleries, and categories into WooCommerce HPOS import hierarchy.`
+- **Environment:** Python 3.10+ / Unittest
+- **Status:** All assertions passing (0 errors, 0 warnings under strict error reporting).
+
+---
+
 ## 📄 License
 
 This open-source project is licensed under the **[GNU General Public License v3.0](LICENSE)**.
